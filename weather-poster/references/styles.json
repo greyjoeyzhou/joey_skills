@@ -1,0 +1,172 @@
+{
+  "soft_daytime_isometric": {
+    "style_name": "Isometric Miniature 3D",
+    "intensity": 60,
+    "details": [
+      "Soft PBR materials",
+      "Rounded edges",
+      "Gentle global illumination",
+      "Pastel color palette",
+      "Soft shadows",
+      "Clean geometry"
+    ]
+  },
+  "nighttime_glow": {
+    "style_name": "Isometric Miniature 3D",
+    "intensity": 70,
+    "details": [
+      "Cool color palette",
+      "Warm window lights",
+      "Soft bloom around lights",
+      "Subtle reflections",
+      "Low ambient light"
+    ]
+  },
+  "rain_city_mood": {
+    "style_name": "Cinematic Realism",
+    "intensity": 65,
+    "details": [
+      "Overcast sky",
+      "Wet reflective streets",
+      "Soft fog",
+      "Volumetric rain streaks",
+      "Muted colors"
+    ]
+  },
+  "snowglobe_miniature": {
+    "style_name": "Claymorphism",
+    "intensity": 65,
+    "details": [
+      "Matte clay surfaces",
+      "Rounded buildings",
+      "Soft ambient occlusion",
+      "Slow floating snow",
+      "Pastel winter palette"
+    ]
+  },
+  "pixel_city_day": {
+    "style_name": "Pixel Art",
+    "intensity": 75,
+    "details": [
+      "64x64 tile scale",
+      "Limited palette (24 colors)",
+      "Hard edges",
+      "Dithered sky gradient",
+      "Crisp outlines"
+    ]
+  },
+  "pixel_city_night": {
+    "style_name": "Pixel Art",
+    "intensity": 80,
+    "details": [
+      "Dark palette",
+      "Neon highlights",
+      "High contrast",
+      "Lit windows",
+      "Simple reflections"
+    ]
+  },
+  "monument_valley_dream": {
+    "style_name": "Monument Valley",
+    "intensity": 75,
+    "details": [
+      "Impossible geometry",
+      "Floating platforms",
+      "Soft pastel gradients",
+      "Long soft shadows",
+      "Surreal calm mood"
+    ]
+  },
+  "watercolor_postcard": {
+    "style_name": "Watercolor",
+    "intensity": 70,
+    "details": [
+      "Paper texture",
+      "Soft pigment bleeding",
+      "Low contrast",
+      "Organic brush strokes",
+      "Pastel tones"
+    ]
+  },
+  "ukiyoe_cityscape": {
+    "style_name": "Ukiyo-e",
+    "intensity": 80,
+    "details": [
+      "Ink outlines",
+      "Flat color blocks",
+      "Visible paper grain",
+      "Traditional palette",
+      "Stylized clouds and waves"
+    ]
+  },
+  "low_poly_poster": {
+    "style_name": "Low-Poly",
+    "intensity": 65,
+    "details": [
+      "Faceted geometry",
+      "Flat shading",
+      "Bold color planes",
+      "Simple lighting"
+    ]
+  },
+  "cyberpunk_neon_night": {
+    "style_name": "Cyberpunk",
+    "intensity": 80,
+    "details": [
+      "Neon signage",
+      "Dark base tones",
+      "Wet reflective surfaces",
+      "Glowing particles",
+      "Holographic accents"
+    ]
+  },
+  "sci_fi_clean_city": {
+    "style_name": "Cinematic Realism",
+    "intensity": 70,
+    "details": [
+      "White + cyan palette",
+      "Glass architecture",
+      "Soft volumetric lighting",
+      "High-tech atmosphere"
+    ]
+  },
+  "flat_poster_clean": {
+    "style_name": "Flat Illustration",
+    "intensity": 65,
+    "details": [
+      "Solid color fills",
+      "Vector edges",
+      "Minimal shadows",
+      "6–8 color palette"
+    ]
+  },
+  "soft_pastel_ui": {
+    "style_name": "Flat Illustration",
+    "intensity": 55,
+    "details": [
+      "Pastel colors",
+      "Rounded shapes",
+      "Very soft shadows",
+      "High whitespace"
+    ]
+  },
+  "isometric_watercolor": {
+    "style_name": "Isometric Miniature 3D",
+    "intensity": 60,
+    "details": [
+      "Watercolor texture overlay",
+      "Soft pigment bleeding",
+      "Pastel palette"
+    ]
+  },
+  "cinematic_cyberpunk": {
+    "style_name": "Cinematic Realism",
+    "intensity": 75,
+    "details": [
+      "Neon lighting",
+      "High contrast",
+      "Wet surfaces",
+      "Volumetric fog"
+    ]
+  }
+}
