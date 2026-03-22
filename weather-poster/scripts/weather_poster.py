@@ -29,9 +29,10 @@ TYPE = Literal["current", "forecast_6h", "forecast_1d", "forecast_2d"]
 UNIT = Literal["metric", "imperial"]
 LANG = Literal["auto", "english", "chinese"]
 
-ROOT = Path(__file__).resolve().parents[3]  # /opt/openclaw/data/workspace
-STYLES_PATH = ROOT / "skills" / "weather-poster" / "references" / "styles.json"
-GEMINI_IMAGE_SCRIPT = ROOT / "scripts" / "gemini-image-gen.py"
+SCRIPT_DIR = Path(__file__).resolve().parent
+SKILL_DIR = SCRIPT_DIR.parent
+STYLES_PATH = SKILL_DIR / "references" / "styles.json"
+GEMINI_IMAGE_SCRIPT = SCRIPT_DIR / "gemini_image_gen.py"
 
 
 @dataclass
@@ -508,12 +509,26 @@ def main() -> int:
     unit: UNIT = args.unit  # type: ignore
     lang: LANG = args.lang  # type: ignore
 
+    # Check API key early so the error is clear before any network calls.
+    if not os.environ.get("GEMINI_API_KEY"):
+        print(
+            "Error: GEMINI_API_KEY is not set.\n"
+            "  export GEMINI_API_KEY='your-key-here'\n"
+            "Get a key at: https://aistudio.google.com/app/apikey",
+            file=sys.stderr,
+        )
+        return 1
+
     styles = load_styles()
     if not args.style:
-        print("No --style specified. Choose one of:")
+        col_key = 30
+        col_style = 26
+        print(f"\n{'Style key':<{col_key}} {'Visual style':<{col_style}} Intensity")
+        print("-" * (col_key + col_style + 12))
         for k in sorted(styles.keys()):
             v = styles[k]
-            print(f"- {k}: {v.get('style_name')} (intensity {v.get('intensity')})")
+            print(f"{k:<{col_key}} {v.get('style_name', ''):<{col_style}} {v.get('intensity', '')}")
+        print("\nPass one of the above keys via --style.\n")
         return 2
     if args.style not in styles:
         known = ", ".join(sorted(styles.keys()))
@@ -525,11 +540,13 @@ def main() -> int:
     intensity = int(args.intensity if args.intensity is not None else style.get("intensity", 60))
     intensity = max(0, min(100, intensity))
 
+    print(f"Fetching weather for {args.city!r} ...")
     geo = geocode_city(args.city)
     lang_label = pick_lang(lang, geo)
 
     meteo = open_meteo_fetch(geo, unit)
     summary = summarize_weather(meteo, wtype)
+    print(f"  {summary['condition']}, {summary['temp_min']:.0f}–{summary['temp_max']:.0f} ({'°C' if unit == 'metric' else '°F'})")
 
     city_display = args.city
 
@@ -550,12 +567,13 @@ def main() -> int:
         out_path = Path(args.out)
     else:
         day = summary["date"]
-        out_dir = ROOT / "output" / "weather-posters" / day
+        out_dir = Path.cwd() / "output" / "weather-posters" / day
         fname = f"{slugify(city_display)}__{wtype}__{args.style}.png"
         out_path = out_dir / fname
 
+    print(f"Generating poster [{style_name} / {wtype}] ...")
     produced = run_gemini_image(prompt, args.model, out_path, aspect=args.aspect)
-    print(str(produced))
+    print(f"\nWeather poster saved to: {produced}")
     return 0
 
 
